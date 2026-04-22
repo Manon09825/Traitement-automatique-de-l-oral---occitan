@@ -25,7 +25,7 @@ audio_path = base_path / "data/common_voice_oc/clips/"
 
 # ============================================= GET SENTENCES AND AUDIO PATH FROM TSV ==============================================
 
-def get_sentences(name):
+def get_sentences_from_tsv(name):
     """ Retrieves sentences from tsv file provided by CommonVoice
     
     Args:

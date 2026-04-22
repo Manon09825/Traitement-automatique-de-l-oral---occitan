@@ -25,6 +25,7 @@ def clean_text(text):
         "o": "ɔ" ,
         ":": "" ,
         "æ": "a" ,
+        "aw": "aʊ",
     }
 
     for old, new in replacements.items():
