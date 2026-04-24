@@ -4,7 +4,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
 
-def run_kneigbors(X_train, y_train, X_test, y_test):
+def run_kneighbors(X_train, y_train, X_test, y_test):
     """ Trains and evaluates the KNN 
     
     Args:
