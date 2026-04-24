@@ -8,6 +8,7 @@ Includes:
     - get_phonemes_from_json: retrieves Lo Congres's transcriptions, stored in json files (to avoid going through Lo Congres
     every time we need to access the transcriptions)
     - get_ref: separates Lo Congres's transcriptions by variant
+    - closest: gets the closest transcription to each of the model's prediction
     - make_dataset: creates dataset using audio files and their transcriptions
 """
 
@@ -17,8 +18,9 @@ import json
 import os
 from datasets import Dataset, Audio
 from pathlib import Path
+from nltk import edit_distance
 
-base_path = Path("/home/manon/Documents/Master/M2/stage")
+base_path = Path("..")
 cv_path = base_path / "data.common_voice_ov/"
 audio_path = base_path / "data/common_voice_oc/clips/"
 
@@ -162,6 +164,35 @@ def get_ref(y_true):
     return {
         var: [t[i] for t in y_true] for i, var in enumerate(variants)
     }
+
+
+# =================================================== GET CLOSEST VARIANT ==========================================================
+
+def closest(pred, true):
+    """ Gets the Lo Congrès transcription closest to the model's prediction
+    From the six transcriptions of Lo Congrès, gets the transcription closest to each model prediction
+
+    Args:
+        - pred (list): list of phonemes predicted by the model
+        - true (list): list of lists of phonemes transcribed by Lo Congrès - each list contains 6 transcriptions, one in each variant of Occitan
+
+    Returns:
+        - y_test_closest (list): list of the Lo Congrès transcriptions closest to each of the model's predictions """
+
+    y_test_closest = []
+
+    for p, tlist in zip(pred, true):
+        best_dist = 1000
+
+        for t in tlist:
+            dist = edit_distance(t, p)
+            if dist < best_dist:
+                best_dist = dist
+                closest_transcription = t
+
+        y_test_closest.append(closest_transcription)
+
+    return y_test_closest
 
 
 # ======================================================== FORM DATASET ============================================================
