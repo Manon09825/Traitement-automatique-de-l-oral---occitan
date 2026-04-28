@@ -95,10 +95,10 @@ def run_probing(X_train, y_train, X_test, y_test, model, processor, predict_func
     """ Probing on the preprocessed data, using an SVM and a KNeighborsClassifier
     
     Args:
-        - X_train (list): list of hidden state vectors, processed in the prepare_probing() function, used to train the probing models
-        - y_train (list): list of lists of phonetic transcriptions by Lo Congres, used to train the probing models
-        - X_test (list): list of hidden state vectors, processed in the prepare_probing() function, used to test the probing models
-        - y_test (list): list of lists of phonetic transcriptions by Lo Congres, used to test the probing models
+        - X_train (list): list of paths to audio files
+        - y_train (list): list of lists of phonetic transcriptions by Lo Congres
+        - X_test (list): list of paths to audio files
+        - y_test (list): list of lists of phonetic transcriptions by Lo Congres
         - model: Wav2Vec2Phoneme, loaded with the model.load_model() function
         - processor: processor loaded with the model.load_model() function'
         - predict_function (func): function used to predict - must return a dict containing at least 'phonemes' and 'last_layer'
