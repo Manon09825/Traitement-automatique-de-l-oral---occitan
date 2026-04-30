@@ -10,16 +10,18 @@ import matplotlib.pyplot as plt
 
 
 
-def plot_confusion_matrix(y_true, y_pred, output_mode='display'):
+def plot_confusion_matrix(y_true, y_pred, output_mode='display', filename=None):
     """ Plots a confusion matrix
     
     Args:
         - y_true (list): list of phonemes transcribed by Lo Congrès
         - y_pred (list): list of phonemes predicted by the model
         - output_mode (str): specifies whether the confusion matrix should be saved as a png file or displayed when running the script
+        - filename (str): name to give the png file if the chosen output_mode is 'save'
         
     Returns:
-        - 
+        - if output_mode is 'display': displays the confusion matrix
+        - if output_mode is 'save': saves the confusion matrix in a png file
     """
     true, pred = [], []
     labels = []
@@ -43,5 +45,9 @@ def plot_confusion_matrix(y_true, y_pred, output_mode='display'):
         plt.show()
     
     elif output_mode == 'save':
-        name = input("Enter a name for the png file: ")
-        plt.savefig(name)
+        try:
+            plt.savefig(f'{filename}.png')
+        
+        except:
+            return "No filename was given. Unable to save the fig. Displaying..."
+            plt.show()
