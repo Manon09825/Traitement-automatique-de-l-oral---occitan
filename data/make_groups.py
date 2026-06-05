@@ -1,6 +1,12 @@
 import csv
 import os
+""" This script includes functions that can be used to group the audio files from CommonVoice by metadata (metadata is sometimes included in the tsv file that came with the audios). It contains 3 functions:
 
+    - group(): this function allows you to group the audios by any metadata group of your choice, given you provide the name of the column that contains the right metadata group
+    - group_by(): allows you to group audios by two different groups of metadata. Mostly used for age and genre in our case.
+    - split_variant(): separates the reference transcriptions from Lo Congrès by variant of Occitan
+
+Note: the first two functions ended up not being used because the metadata given in the CommonVoice dataset was not consistent enough to build relevant groups."""
 
 
 # =================================== GROUP BY METADATA =========================================
@@ -10,7 +16,7 @@ def group(column, group, category, tsv_path, base_clip_path):
     
     Args:
         - column (str): column of the tsv file which specifies the type of metadata (ex "age")
-        - group (str): value of the metadata foun in the column in the tsv file (ex "twenties")
+        - group (str): value of the metadata found in the column in the tsv file (ex "twenties")
         - category (str): name of the category assigned to the audio (ex "Age 20") 
         - tsv_path (str): path to the tsv file
         - base_clip_path (str): path to the audio files
