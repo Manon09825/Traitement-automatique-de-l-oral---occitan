@@ -1,5 +1,6 @@
 # Traitement automatique de l'oral - Occitan
 [Rapport du projet](https://github.com/Manon09825/Traitement-automatique-de-l-oral---occitan/blob/main/Rapport_de_stage_MOULIN_Manon.pdf)
+
 Ce projet est mené dans le cadre du projet TARTOAS, mené conjointement par les laboratoires LATTICE, LPP et ERTIM.
 L'objectif de ce projet est la conception d'un modèle de transcription de l'occitan oral vers l'alphabet phonétique international. Nous commençons par tester un modèle déjà existant: wav2vec2phoneme.
 
